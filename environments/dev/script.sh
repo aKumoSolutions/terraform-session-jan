@@ -17,3 +17,5 @@ fi
 
 perl -pi -e "s/${environment}/_env_/g" backend.tf
 
+# perl -pi -e = MacOS
+# sed -i  = Linux
