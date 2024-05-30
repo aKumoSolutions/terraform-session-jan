@@ -7,4 +7,5 @@ resource "aws_instance" "web" {
     Name = "${var.env}-instance",        
     Environment = var.env
   }
+  
 }
