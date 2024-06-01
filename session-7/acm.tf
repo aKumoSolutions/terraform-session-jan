@@ -22,6 +22,7 @@ resource "aws_route53_record" "validation_record" {
     }
   }
 
+
   allow_overwrite = true
   name            = each.value.name
   records         = [each.value.record]
@@ -30,7 +31,16 @@ resource "aws_route53_record" "validation_record" {
   zone_id         = var.hosted_zone_id
 }
 
+output "test" {
+  value = aws_acm_certificate.main.domain_validation_options
+}
+
+
 resource "aws_acm_certificate_validation" "main" {
   certificate_arn         = aws_acm_certificate.main.arn
   validation_record_fqdns = [for record in aws_route53_record.validation_record : record.fqdn]
+}
+
+output "test1" {
+  value = aws_route53_record.validation_record
 }
